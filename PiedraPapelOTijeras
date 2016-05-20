@@ -9,7 +9,7 @@ def PiedraPapelOTijeras(x):
                   '1.- Piedra.'+'\n'+
                   '2.- Papel.'+'\n'+
                   '3.- Tijeras.'+'\n'+'\n')
-    print('\n'+nombre + ' ha elegido ' + Opciones[int(opcion)-1]+'\n')
+    print('\n'+nombre + ' ha elegido ' + Opciones[int(opcion)-1])
 
     EleccionJugador = Opciones[int(opcion)-1]
     EleccionMaquina = Opciones[int(random.randint(0,2))]
@@ -37,7 +37,7 @@ def PiedraPapelOTijeras(x):
         print('Las tijeras cortan el papel.')
         print('¡'+nombre+' gana! ヽ(´ー`)人(´∇｀)人(`Д´)ノ')
     elif EleccionJugador == 'Tijeras' and EleccionMaquina == 'Piedra':
-        print('La piedra destroza a las tijeras')
+        print('La piedra destroza a las tijeras (t>.<)t  t(>.<t)')
         print(nombre+' pierde. ')
 
     replay = input('¿Jugar otra vez? S/N'+'\n')
