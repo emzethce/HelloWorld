@@ -1,7 +1,19 @@
 import random
 Opciones = ['Piedra','Papel','Tijeras']
-nombre = input('\n'+'\n'+'\n'+'¡Bienvenido al juego!'+'\n'+'\n'+'¿Cuál es tu nombre? ')
+nombre = input(
 
+'''
+    PIEDRA
+    ( ⊃・ω・)⊃	
+    
+        PAPEL
+        ⊂( ･∀･) 彡　=͟͟͞͞ ⌧
+        
+            TIJERAS            
+                ( ＾◡＾)っ
+
+''' + 
+    '\n'+'\n'+'\n'+'¡Bienvenido al juego!'+'\n'+'\n'+'¿Cuál es tu nombre? ')
 
 def PiedraPapelOTijeras(x):
     while True:
@@ -13,7 +25,7 @@ def PiedraPapelOTijeras(x):
 
             
 
-            if int(opcion) > 3:
+            if int(opcion) > 3 or int(opcion) == 0:
                 print('Ese no es un número válido ¯\_(ツ)_/¯ ')
                 PiedraPapelOTijeras(nombre)
             else:
@@ -45,10 +57,10 @@ def PiedraPapelOTijeras(x):
                     print('Las tijeras cortan el papel.')
                     print('¡'+nombre+' gana! ヽ(´ー`)人(´∇｀)人(`Д´)ノ')
                 elif EleccionJugador == 'Tijeras' and EleccionMaquina == 'Piedra':
-                    print('La piedra destroza a las tijeras (t>.<)t  t(>.<t)')
+                    print('La piedra destroza a las tijeras t(>.<t)')
                     print(nombre+' pierde. ')
         except ValueError:
-            print('Eso no es un número ლ(ಠ_ಠლ)')
+            print('Eso ni siquiera es un número ლ(ಠ_ಠლ)')
             PiedraPapelOTijeras(nombre)
 
         replay = input('¿Jugar otra vez? S/N'+'\n')
@@ -63,4 +75,5 @@ def PiedraPapelOTijeras(x):
             PiedraPapelOTijeras(nombre)
     
 PiedraPapelOTijeras(nombre)
+
 
