@@ -4,47 +4,63 @@ nombre = input('\n'+'\n'+'\n'+'¡Bienvenido al juego!'+'\n'+'\n'+'¿Cuál es tu 
 
 
 def PiedraPapelOTijeras(x):
-    x = 1
-    opcion = input(nombre+', por favor selecciona una de las siguientes opciones:'+'\n'+
-                  '1.- Piedra.'+'\n'+
-                  '2.- Papel.'+'\n'+
-                  '3.- Tijeras.'+'\n'+'\n')
-    print('\n'+nombre + ' ha elegido ' + Opciones[int(opcion)-1])
+    while True:
+        try:
+            opcion = int(input(nombre+', por favor selecciona una de las siguientes opciones:'+'\n'+
+                          '1.- Piedra.'+'\n'+
+                          '2.- Papel.'+'\n'+
+                          '3.- Tijeras.'+'\n'+'\n'))
 
-    EleccionJugador = Opciones[int(opcion)-1]
-    EleccionMaquina = Opciones[int(random.randint(0,2))]
+            
 
-    print('La computadora ha elegido ' + EleccionMaquina+'\n'+'\n'+'\n')
+            if int(opcion) > 3:
+                print('Ese no es un número válido ¯\_(ツ)_/¯ ')
+                PiedraPapelOTijeras(nombre)
+            else:
+                print('\n'+nombre + ' ha elegido ' + Opciones[int(opcion)-1])
 
-    if EleccionJugador == EleccionMaquina:
-        print('Tenemos un empate. ಠ╭╮ಠ')
-        
-    elif EleccionJugador == 'Piedra' and EleccionMaquina == 'Tijeras':
-        print('La piedra destroza a las tijeras.')
-        print('¡'+nombre+' gana! ヽ(´ー`)人(´∇｀)人(`Д´)ノ')
-    elif EleccionJugador == 'Piedra' and EleccionMaquina == 'Papel':
-        print('El papel envuelve a la piedra.')
-        print(nombre+' pierde. ಥ_ಥ')
-        
-    elif EleccionJugador == 'Papel' and EleccionMaquina == 'Piedra':
-        print('El papel envuelve a la piedra.')
-        print('¡'+nombre+' gana! ヽ(´ー`)人(´∇｀)人(`Д´)ノ')
-    elif EleccionJugador == 'Papel' and EleccionMaquina == 'Tijeras':
-        print('El papel es cortado por las tijeras.')
-        print(nombre+' pierde. (ノಠ益ಠ)ノ')
+                EleccionJugador = Opciones[int(opcion)-1]
+                EleccionMaquina = Opciones[int(random.randint(0,2))]
 
-    elif EleccionJugador == 'Tijeras' and EleccionMaquina == 'Papel':
-        print('Las tijeras cortan el papel.')
-        print('¡'+nombre+' gana! ヽ(´ー`)人(´∇｀)人(`Д´)ノ')
-    elif EleccionJugador == 'Tijeras' and EleccionMaquina == 'Piedra':
-        print('La piedra destroza a las tijeras (t>.<)t  t(>.<t)')
-        print(nombre+' pierde. ')
+                print('La computadora ha elegido ' + EleccionMaquina+'\n'+'\n'+'\n')
 
-    replay = input('¿Jugar otra vez? S/N'+'\n')
-    if replay == 's' or replay == 'S' :
-        print('\n')
-        PiedraPapelOTijeras(nombre)
-    else:
-        print('Hasta la próxima ♪┏(・o･)┛♪┗ ( ･o･) ┓♪')
+                if EleccionJugador == EleccionMaquina:
+                    print('Tenemos un empate. ಠ╭╮ಠ')
+                    
+                elif EleccionJugador == 'Piedra' and EleccionMaquina == 'Tijeras':
+                    print('La piedra destroza a las tijeras.')
+                    print('¡'+nombre+' gana! ヽ(´ー`)人(´∇｀)人(`Д´)ノ')
+                elif EleccionJugador == 'Piedra' and EleccionMaquina == 'Papel':
+                    print('El papel envuelve a la piedra.')
+                    print(nombre+' pierde. ಥ_ಥ')
+                    
+                elif EleccionJugador == 'Papel' and EleccionMaquina == 'Piedra':
+                    print('El papel envuelve a la piedra.')
+                    print('¡'+nombre+' gana! ヽ(´ー`)人(´∇｀)人(`Д´)ノ')
+                elif EleccionJugador == 'Papel' and EleccionMaquina == 'Tijeras':
+                    print('El papel es cortado por las tijeras.')
+                    print(nombre+' pierde. (ノಠ益ಠ)ノ')
+
+                elif EleccionJugador == 'Tijeras' and EleccionMaquina == 'Papel':
+                    print('Las tijeras cortan el papel.')
+                    print('¡'+nombre+' gana! ヽ(´ー`)人(´∇｀)人(`Д´)ノ')
+                elif EleccionJugador == 'Tijeras' and EleccionMaquina == 'Piedra':
+                    print('La piedra destroza a las tijeras (t>.<)t  t(>.<t)')
+                    print(nombre+' pierde. ')
+        except ValueError:
+            print('Eso no es un número ლ(ಠ_ಠლ)')
+            PiedraPapelOTijeras(nombre)
+
+        replay = input('¿Jugar otra vez? S/N'+'\n')
+        if replay == 's' or replay == 'S' :
+            print('\n')
+            PiedraPapelOTijeras(nombre)
+        elif replay == 'n' or replay == 'N':
+            print('Hasta la próxima ♪┏(・o･)┛♪┗ ( ･o･) ┓♪')
+        else:
+            print('\n'+'Esa no es una opción válida ಠ_ರೃ')
+            print('\n'+'Volvemos a empezar (∩｀-´)⊃━☆ﾟ.*･｡ﾟ'+'\n')
+            PiedraPapelOTijeras(nombre)
     
 PiedraPapelOTijeras(nombre)
+
