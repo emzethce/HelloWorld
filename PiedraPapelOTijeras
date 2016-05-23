@@ -1,24 +1,101 @@
 import random
+#Define la lista de emociones
 Opciones = ['Piedra','Papel','Tijeras']
-nombre = input(
-
+#Lista de emoticons
+emoticons = {
+'Piedra' : '''
+        PIEDRA   
+                 
+         _.-._   
+        | | | |-.
+       / )|_|_|_|
+      | |-^-^-^-'
+      |     ||  |
+      \     '   /
+       |       | 
+       |       | 
+       |       | 
+       |       | 
+       |       | 
+       |       | 
+       |       | '''
+,'Papel':
 '''
-    PIEDRA
-    ( ⊃・ω・)⊃	
-    
-        PAPEL
-        ⊂( ･∀･) 彡　=͟͟͞͞ ⌧
-        
-            TIJERAS            
-                ( ＾◡＾)っ
+         PAPEL    
+                  
+           .-.    
+         .-| |-.  
+         | | | |  
+       .-| | | |  
+       | | | | |  
+       | | | | |-.
+       | '     | |
+       |       | |
+       |         |
+       \         /
+        |       | 
+        |       | 
+        |       | 
+'''
+,'Tijeras' : '''
+        TIJERAS     
+                    
+                 _  
+        _       /<) 
+       (>\     / /  
+        \ \   / /   
+         \ \ / /    
+          \ V / Y-. 
+         / )  |_|_| 
+        | |   `-^-' 
+        |     ||  | 
+        \     '   / 
+         |       |  
+         |       |  
+'''
+}
 
-''' + 
+#Input para el nombre
+nombre = input(
+"""
+        PIEDRA              PAPEL           TIJERAS     
+                                                        
+         _.-._                .-.                   _   
+        | | | |-.           .-| |-.        _       /<)  
+       / )|_|_|_|           | | | |       (>\     / /   
+      | |-^-^-^-|         .-| | | |        \ \   / /    
+      |     ||  |         | | | | |         \ \ / /     
+      \     '   /         | | | | |-.        \_V_/ Y-.  
+       |       |          | '     | |       / )  |_|_|  
+       |       |          |       | |       | |   `-^-' 
+       |       |          |         |       |     ||  | 
+       |       |          \         /       |     ||  | 
+       |       |           |       |        \     '   / 
+       |       |           |       |         |       |  
+       |       |           |       |         |       |  
+""" + 
     '\n'+'\n'+'\n'+'¡Bienvenido al juego!'+'\n'+'\n'+'¿Cuál es tu nombre? ')
+if nombre == 'Omar' or nombre == 'omar':
+    print('''
+────────▀██▀─▀██▀─▄▄▄─▄▄▄──▄▄▄──▄──▄─
+─────────██▄▄▄██─█──█─█──█─█──█─█──█─
+▀██▀▀▄───██───██─▀▄▀█─█▄▄▀─█▄▄▀─▀▄▀█─
+─██▄▀▄──▄██▄─▄██▄─────█────█───▀▄▄▄▀─
+─██───█─▄──────▄──█───────█──────▄──▄
+─██───█─▄─▄─▄─▄█▄─█─▄───▄▄█─▄▀▀█─█──█
+▄██▄▄▀──█─█▀───█──█▀─█─█──█─█─▄█─▀▄▀█
+────────█─█────█──█──█─▀▄▀█──▀─▀─▄▄▄▀ 
+''')
+
+
+#Aquí empieza la funcion
 
 def PiedraPapelOTijeras(x):
+    #Inicia el Bucle, si la condición es True (siempre lo es), sólo se rompe en caso de terminar con una 'n' o una 'N'
     while True:
+        #Inicia 'Try'
         try:
-            opcion = int(input(nombre+', por favor selecciona una de las siguientes opciones:'+'\n'+
+            opcion = int(input('\n'+nombre+', por favor selecciona una de las siguientes opciones:'+'\n'+
                           '1.- Piedra.'+'\n'+
                           '2.- Papel.'+'\n'+
                           '3.- Tijeras.'+'\n'+'\n'))
@@ -33,8 +110,11 @@ def PiedraPapelOTijeras(x):
 
                 EleccionJugador = Opciones[int(opcion)-1]
                 EleccionMaquina = Opciones[int(random.randint(0,2))]
+                print(emoticons[EleccionJugador])
+
 
                 print('La computadora ha elegido ' + EleccionMaquina+'\n'+'\n'+'\n')
+                print(emoticons[EleccionMaquina])
 
                 if EleccionJugador == EleccionMaquina:
                     print('Tenemos un empate. ಠ╭╮ಠ')
@@ -63,17 +143,41 @@ def PiedraPapelOTijeras(x):
             print('Eso ni siquiera es un número ლ(ಠ_ಠლ)')
             PiedraPapelOTijeras(nombre)
 
-        replay = input('¿Jugar otra vez? S/N'+'\n')
-        if replay == 's' or replay == 'S' :
+        replay = input('\n'+'\n'+'¿Jugar otra vez? S/N'+'\n')
+
+        #Condición que acaba con el Try
+        if replay == 'n' or replay == 'N':
+            print('Hasta la próxima ♪┏(・o･)┛♪┗ ( ･o･) ┓♪')
+            break
+
+        elif replay == 's' or replay == 'S' :
             print('\n')
             PiedraPapelOTijeras(nombre)
-        elif replay == 'n' or replay == 'N':
-            print('Hasta la próxima ♪┏(・o･)┛♪┗ ( ･o･) ┓♪')
+
+
         else:
-            print('\n'+'Esa no es una opción válida ಠ_ರೃ')
+            print('\n'+'''
+......................................__...................................................
+.............................,-~*`¯lllllll`*~,.............................................
+.......................,-~*`lllllllllllllllllllllllllll¯`*-,...............................
+..................,-~*llllllllllllllllllllllllllllllllllllllllllll*-,......................
+...............,-*llllllllllllllllllllllllllllllllllllllllllllllllllllll.\.................
+.............;*`lllllllllllllllllllllllllll,-~*~-,llllllllllllllllllll\....................
+..............\lllllllllllllllllllllllllll/.........\;;;;llllllllllll,-`~-,................
+...............\lllllllllllllllllllll,-*...........`~-~-,...(.(¯`*,`,......................
+................\llllllllllll,-~*.....................)_-\..*`*;..)........................
+.................\,-*`¯,*`)............,-~*`~................/.............................
+..................|/.../.../~,......-~*,-~*`;................/.\...........................
+................./.../.../.../..,-,..*~,.`*~*................*...\.........................
+................|.../.../.../.*`...\...........................)....)¯`~,..................
+................|./.../..../.......)......,.)`*~-,............/....|..)...`~-,.............
+..............././.../...,*`-,.....`-,...*`....,---......\..../...../..|.........¯```*~-,,,
+...............(..........)`*~-,....`*`.,-~*.,-*......|.../..../.../............\..........
+................*-,.......`*-,...`~,..``.,,,-*..........|.,*...,*...|..............\.......
+...................*,.........`-,...)-,..............,-*`...,-*....(`-,............\.......
+......................f`-,.........`-,/...*-,___,,-~*....,-*......|...`-,..........\.......   ''')
+            print(nombre+' "'+replay+ '" no es una opción válida.')
             print('\n'+'Volvemos a empezar (∩｀-´)⊃━☆ﾟ.*･｡ﾟ'+'\n')
             PiedraPapelOTijeras(nombre)
     
 PiedraPapelOTijeras(nombre)
-
-
