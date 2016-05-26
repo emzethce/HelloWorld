@@ -1,0 +1,273 @@
+import random
+
+Dificultades = {1: 'Muy fácil',2:'Fácil',3:'Difícil',4:' Muy difícil'}
+
+Diccionarios = {
+1 : ['Casa','Perro','NIÑA','BUENO','LINDA','moño'],
+2 : ['AHORCADO','AUTOMOVIL','FIERO','PESCADORES','PARACAIDAS','Maquina','Callejon','Rebecastor'],
+3 : ['ANTICONSTITUCIONAL','ELECTROMAGNETISMO','CARBONIFICACION','ELECTROCARDIOGRAMA','LACTOVEGETARIANISMO','Camaraderia','Esplendoroso','Magnanimo'],
+4 : ['PEYORATIVO','MISANTROPIA','HUITZILOPOCHTLI','FILANTROPIA','ESTERNOCLEIDOMASTOIDEO','Parangaricutirimicuaro']}
+
+Dibujos_ahorcado = ['''
+
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========''', '''
+
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========''', '''
+
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========''', '''
+
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========''', '''
+
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========''', '''
+
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========''']
+
+nombre = input((
+                '''
+
+    /_____________.;;'/|
+   |"____  _______;;;]/
+   | || //'         ;
+   | ||//'          ;
+   | |//'           ;
+   |  /'            $
+   | ||             $
+   | ||             $
+   | ||            ,^.
+   | ||            | |
+   | ||            `.'
+   | || 
+   | || 
+   | || 
+   | || 
+   | ||   _________________________   
+   | ||  /                        4
+   | || /                        /| 
+   | ||/           _____        / /
+   | ||           /|___/       / /|
+   | ||          / |  /       / /||
+   |_|/         / __ /       / / ||
+  /             """""       / /| ||
+ /                         / / | ||
+/                         / /  | ||
+""""""""""""""""""""""""""|/   | ||
+______A_H_O_R_C_A_D_O_____||   | |
+| ||                    | ||           
+| ||                    | ||    
+| ||                    | ||
+| ||                    | ||
+| ||                    | ||
+| |                     | |
+ 
+'''+'\n'+'Por favor ingresa tu nombre: '))
+if nombre == 'Omar' or nombre == 'omar':
+    print('''
+────────▀██▀─▀██▀─▄▄▄─▄▄▄──▄▄▄──▄──▄─
+─────────██▄▄▄██─█──█─█──█─█──█─█──█─
+▀██▀▀▄───██───██─▀▄▀█─█▄▄▀─█▄▄▀─▀▄▀█─
+─██▄▀▄──▄██▄─▄██▄─────█────█───▀▄▄▄▀─
+─██───█─▄──────▄──█───────█──────▄──▄
+─██───█─▄─▄─▄─▄█▄─█─▄───▄▄█─▄▀▀█─█──█
+▄██▄▄▀──█─█▀───█──█▀─█─█──█─█─▄█─▀▄▀█
+────────█─█────█──█──█─▀▄▀█──▀─▀─▄▄▄▀ 
+''')
+
+def ahorcado(x):
+    while True:
+        try:
+            dificultad = int(input('\n'+nombre+ ''', por favor selecciona una dificultad:
+    1. Muy fácil
+    2. Fácil
+    3. Difícil
+    4. Muy difícil
+
+    '''))
+            if dificultad > 4 or dificultad == 0:
+                print('\n'+nombre +' esa opción no existe, selecciona un número entre 1 y 4.')
+                ahorcado(nombre)
+            else:
+                jugadas = 0
+                print('\n'+nombre +', has elegido '+ Dificultades[dificultad]+'.')
+                print(Dibujos_ahorcado[jugadas])
+                diccionario = Diccionarios[dificultad]
+                palabra = list(((diccionario[random.randint(0,len(diccionario))])).upper())
+                oculta = list(("_")*(len(palabra)))
+                print(("_ ")*int(len(palabra)))
+                muestra = palabra
+                #print(palabra)
+
+                #Inicia el bucle
+                letras_usadas = []
+                while (jugadas <= 5) == True and palabra != oculta:
+                    try:                                                
+                        letra = (input(nombre+', ingresa una letra: ')).upper()
+                        
+                        #Si la letra si está en la palabra:
+                        if palabra.index(letra) >= 0:
+                            for y in range(len(palabra)):
+                                if palabra[y] == letra:
+                                    oculta[y] = letra
+                                    print('Correcto2, '+nombre)
+                                    print(Dibujos_ahorcado[jugadas])
+                                    print(' '.join(oculta))
+                                    print('Letras equivocadas: ' + ''.join(letras_usadas))
+
+#*********************************************************************************************
+#                        Estas condiciones no están funcionando:
+#
+#                       if letras_usadas.index(letra) >= 0:
+#                           print('Ya has intentado usar esa letra ಠ╭╮ಠ')
+#                       if letra.isdecimal() == True:
+#                           print('\n'+'Eso ni siquiera es una letra ლ(ಠ╭╮ಠლ)')              
+#*********************************************************************************************                       
+                        #Si la letra no está en la palabra:
+                    except ValueError:
+                        jugadas += 1
+                        letras_usadas.append(letra+' ')
+                        print(Dibujos_ahorcado[jugadas])
+                        print(' '.join(oculta))
+                        print('Letras equivocadas: ' + ''.join(letras_usadas))                        
+                break    
+        except ValueError:
+            print('\n'+'Eso ni siquiera es un número ლ(ಠ_ಠლ)')
+            ahorcado(nombre)
+    if palabra == oculta:
+        print('¡Correcto, '+nombre+'! La palabra era '+(''.join(palabra).title())+'.'+'\n')
+        replay = input('¿Volver a jugar? (S/N) ')        
+    elif (jugadas > 5):
+        if nombre != 'Omar' and nombre != 'omar':
+            print('''
+
+                      _  /)
+                        / )
+                     |/)\)
+                      /\_
+                      \__|=
+                     (    )
+                     __)(__
+               _____/      \\_____
+              |  _     ___   _   ||
+              | | \     |   | \  ||
+              | |  |    |   |  | ||
+              | |_/     |   |_/  ||
+              | | \     |   |    ||
+              | |  \    |   |    ||
+              | |   \. _|_. | .  ||
+              |     ~~~~~~~~~~   ||
+              |  '''+nombre.center(15)+''' ||
+              |     ~~~~~~~~~~   ||
+      *       | *   **    * **   |**      **
+
+     
+    ''')
+            print('La palabra era '+(''.join(palabra).title())+'.'+'\n')
+            replay = input('¿Volver a jugar? (S/N) ')            
+        else:
+            print('''
+
+                      _  /)
+                        / )
+                     |/)\)
+                     
+                      /\_
+                      \__|=
+                     (    )
+                     __)(__
+               _____/      \\_____
+              |  _     ___   _   ||
+              | | \     |   | \  ||
+              | |  |    |   |  | ||
+              | |_/     |   |_/  |
+              |
+              | | \     |   |    ||
+              | |  \    |   |    ||
+              | |   \. _|_. | .  ||
+              |  '''+nombre.center(15)+''' ||
+              | Era su cumpleaños||
+      *       | *   **    * **   |**      **
+
+     
+    ''')
+            print('La palabra era '+(''.join(palabra).title())+'.'+'\n')            
+            replay = input('¿Volver a jugar? (S/N) ')
+    if (replay == 's' or replay == 'S') and palabra != oculta:
+        print('''
+                          _  /)
+                            / )
+                         |/)\)
+                          /\_
+                          \__|=
+                         (    )
+                         __)(__
+                   _____/      \\_____
+                  |  _     ___   _   ||
+                  | | \     |   | \  ||
+                  | |  |    |   |  | ||
+                  | |_/     |   |_/  ||
+                  | | \     |   |    ||
+                  | |  \    |   |    ||
+                  | |    _.-._    .  ||
+                  |     | | | |-     ||
+                  |     | | | | |    ||
+                  |    / )| | | |    ||
+          *       | * | |--^-^-'|    |**      **
+                 /    |    | |  |   /
+                /     \     '   /  / *    *
+               /       |       |  /
+              /       <|       |>/ 
+             /          w*w*w*w*/
+''')
+        ahorcado(nombre)
+    elif (replay == 's' or replay == 'S') and palabra == oculta:
+        ahorcado(nombre)
+    elif replay == 'n' or replay == 'N':
+        print('Hasta la próxima ♪┏(・o･)┛♪┗ ( ･o･) ┓♪')
+    else:
+        print('\n'+nombre+' "'+replay+ '" no es una opción válida.')
+        print('\n'+'Volvemos a empezar (∩｀-´)⊃━☆ﾟ.*･｡ﾟ'+'\n')
+        ahorcado(nombre)
+ahorcado(nombre)
