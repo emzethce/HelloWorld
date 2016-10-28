@@ -1,0 +1,44 @@
+# Adivina el número
+# Juego para adivinar un número entre 1 y 50
+
+import random
+
+print('Hola ¿Cómo te llamas?')
+nombre = input()
+retry = ''
+print('Hola, ' + nombre + '. Estoy pensando en un número entre 1 y 50 ¿Puedes adivinarlo?')
+
+def Adivina(nombre):
+    númeroSecreto = random.randint(1,50)
+
+    for guessesTaken in range(7):
+        print('Adivina el número')
+        adivina = int(input())
+
+        if adivina < númeroSecreto:
+            print('El número que sugieres es demasiado pequeño')
+        elif adivina > númeroSecreto:
+            print('El número que sugieres es demasiado grande')
+        else:
+            break
+
+    if adivina == númeroSecreto:
+        print('¡Correcto, ' + nombre + '! Has adivinado el número en ' +str(guessesTaken) + ' intentos.')
+
+    if adivina != númeroSecreto:
+        print('¡Fallaste, ' + nombre + '! El número era ' + str(númeroSecreto))
+    volverAJugar(retry)
+
+def volverAJugar(retry):
+    print('¿Jugar de nuevo? (S/N)')
+    retry = input().lower()
+    if retry not in ('s', 'n'):
+        print('Opción inválida')
+        volverAJugar(retry)
+    if retry == 's':
+        print('Hola de nuevo, ' + nombre + '. Estoy pensando en otro número entre 1 y 50 ¿Puedes adivinarlo?')
+        Adivina(nombre)
+    if retry == 'n':
+        print ('Hasta luego')
+        
+Adivina(nombre)
